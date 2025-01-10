@@ -14578,7 +14578,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>vi hämgtar data:</p>
+<h1 id="Visualisering-av-UFC-Fighters-med-Dataanalys-och-Web-Scraping">Visualisering av UFC Fighters med Dataanalys och Web Scraping<a class="anchor-link" href="#Visualisering-av-UFC-Fighters-med-Dataanalys-och-Web-Scraping">&#182;</a></h1><h2 id="Inledning">Inledning<a class="anchor-link" href="#Inledning">&#182;</a></h2><p>Mixed Martial Arts (MMA) har vuxit exponentiellt i popularitet de senaste åren, med Ultimate Fighting Championship (UFC) i spetsen. Att förstå vilka fighters som dominerar i sina respektive viktklasser kan ge insikt i sportens dynamik och utveckling. I detta projekt visualiseras UFC:s toppfighters i olika viktklasser baserat på antalet vinster och deras förluster.  Data hämtas från en kombination av dataset och web scraping från UFC:s hemsida. Vi visualiserar sedan dessa data genom att skapa anpassade diagram som inkluderar bilder av varje fighter för ett mer interaktivt och engagerande resultat.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Metoder">Metoder<a class="anchor-link" href="#Metoder">&#182;</a></h2><h3 id="1.-Insamling-av-data-fr%C3%A5n-UFC:s-hemsida">1. Insamling av data fr&#229;n UFC:s hemsida<a class="anchor-link" href="#1.-Insamling-av-data-fr%C3%A5n-UFC:s-hemsida">&#182;</a></h3><p>Jag använde biblioteket requests och BeautifulSoup för att samla in data om alla UFC-fighters. Genom att iterera över alfabetet (a-z) hämtade jag data från en tabell på varje sida och lagrade dessa i en lista av DataFrames.</p>
 
 </div>
 </div>
@@ -14628,6 +14639,36 @@ Fetching data for http://www.ufcstats.com/statistics/fighters?char=z&amp;page=al
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Vad-som-skedde:">Vad som skedde:<a class="anchor-link" href="#Vad-som-skedde:">&#182;</a></h3><ul>
+<li>Data från alla bokstavsbaserade sidor på UFC:s webbplats hämtades.</li>
+<li>Tabellen på varje sida lästes in som en DataFrame och lagrades för vidare bearbetning.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.-Kombinering-av-data-och-klassificering-av-fighters-efter-viktklass">2. Kombinering av data och klassificering av fighters efter viktklass<a class="anchor-link" href="#2.-Kombinering-av-data-och-klassificering-av-fighters-efter-viktklass">&#182;</a></h3><p>Efter att ha hämtat data kombinerade jag alla tabeller till en enda dataset. Därefter bearbetade jag data genom att:</p>
+<ul>
+<li>Rensa kolumner och konvertera vikter från text till numeriska värden.</li>
+<li>Skapa viktklasser baserat på gränsvärden (t.ex. Strawweight, Flyweight).</li>
+<li>Tilldela varje fighter en viktklass utifrån deras vikt.</li>
+</ul>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
@@ -14662,6 +14703,32 @@ Name: Weight Class, dtype: int64
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Vad-som-skedde:">Vad som skedde:<a class="anchor-link" href="#Vad-som-skedde:">&#182;</a></h3><ul>
+<li>Alla tabeller kombinerades till en dataset.</li>
+<li>Vikter rensades och konverterades från text (t.ex. "170 lbs.") till numeriska värden.</li>
+<li>Varje fighter tilldelades en viktklass baserat på deras vikt.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="3.-Visualisering-av-topp-10-fighters">3. Visualisering av topp 10 fighters<a class="anchor-link" href="#3.-Visualisering-av-topp-10-fighters">&#182;</a></h3><p>Jag visualiserade de topp 10 fighters med flest vinster i varje viktklass. För att göra visualiseringarna mer engagerande inkluderade jag bilder av varje fighter, som jag hämtade från UFC:s hemsida med Selenium.</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
@@ -14886,30 +14953,46 @@ class="
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Vad-som-skedde:">Vad som skedde:<a class="anchor-link" href="#Vad-som-skedde:">&#182;</a></h3><ul>
+<li>De topp 10 fighters i varje viktklass med färre än 5 förluster identifierades.</li>
+<li>Bilder för varje fighter hämtades och lagrades lokalt.</li>
+</ul>
 
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Mean Squared Error on Test Data: 0.7681544093140641
-                Name     W  PredictedWins
-1396    Royce Gracie  15.0      17.209893
-4104     Steve White   1.0       1.000000
-839   Sean Daugherty   0.0       0.000000
-</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Diskussion">Diskussion<a class="anchor-link" href="#Diskussion">&#182;</a></h2><p>Projektet kombinerar datahantering och visualisering för att ge en tydlig översikt över UFC:s toppfighters. Den största utmaningen var att hämta bilder från UFC:s hemsida med web scraping, vilket krävde lösningar för att hantera långsamma laddningstider och felaktiga länkar. Visualiseringarna är användarvänliga och erbjuder en tydlig bild av de mest framgångsrika fighters.</p>
+<h2 id="Begr%C3%A4nsningar:">Begr&#228;nsningar:<a class="anchor-link" href="#Begr%C3%A4nsningar:">&#182;</a></h2><p>Fighters med saknade bilder inkluderas i diagrammen utan en bildrepresentation.
+Projektet fokuserar endast på fighters med färre än fem förluster, vilket exkluderar potentiellt framstående fighters med fler förluster.
+Slutsatser
+Detta projekt illustrerar hur dataanalys och visualisering kan användas för att förstå UFC:s fighterstatistik på ett engagerande sätt. Det ger en lättillgänglig bild av de bästa fighters i varje viktklass och kan användas som inspiration för vidare analys, exempelvis att inkludera ytterligare parametrar som avslutningsmetod eller karriärens längd.</p>
 
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Slutsats:">Slutsats:<a class="anchor-link" href="#Slutsats:">&#182;</a></h2><p>Detta projekt kombinerade dataanalys, web scraping och visualisering för att skapa en engagerande presentation av UFC:s toppfighters. Processen var lärorik och visade hur avancerade verktyg kan användas för att automatisera datahantering och förbättra insiktskapande.</p>
 
 </div>
-
+</div>
+</div>
 </div>
 </body>
 
